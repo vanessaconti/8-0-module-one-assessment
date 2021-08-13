@@ -68,7 +68,16 @@ const exampleMovies = require("./movies");
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+ function getAverageIMDBRating(movies) {
+  let averageImdbRating = 0;
+  for (let i=0; i<movies.length; i++) {
+    averageImdbRating += Number(movies[i].imdbRating);
+    if (i === movies.length-1) {
+      averageImdbRating /= movies.length;
+    }
+  }
+  return averageImdbRating;
+}
 
 /**
  * countByRating()
@@ -81,7 +90,17 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+ function countByRating(movies) {
+  let ratedObj = {};
+  for(let movie of movies) {
+    if (ratedObj[movie.rated]) {
+      ratedObj[movie.rated] += 1;
+    } else {
+      ratedObj[movie.rated] = 1
+    }
+  }
+  return ratedObj;
+}
 
 /**
  * findById()
