@@ -145,7 +145,15 @@ const exampleMovies = require("./movies");
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+    function filterByGenre(movies, genre) {
+      let sameGenreArr = [];
+      for (let movie of movies) {
+        if(movie.genre.toUpperCase().includes(genre.toUpperCase())) {
+          sameGenreArr.push(movie);
+        }
+      }
+      return sameGenreArr;
+    }
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
