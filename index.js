@@ -148,7 +148,7 @@ const exampleMovies = require("./movies");
     function filterByGenre(movies, genre) {
       let sameGenreArr = [];
       for (let movie of movies) {
-        if(movie.genre.toUpperCase().includes(genre.toUpperCase())) {
+        if(movie.genre.toLowerCase().includes(genre.toLowerCase())) {
           sameGenreArr.push(movie);
         }
       }
