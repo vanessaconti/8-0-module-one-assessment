@@ -177,7 +177,15 @@ const exampleMovies = require("./movies");
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+    function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+      let givenPeriodMoviesArr = [];
+      for (let movie of movies) {
+        if (Number(movie.released.split(" ")[2]) <= year) {
+          givenPeriodMoviesArr.push(movie);
+        }
+      }
+      return givenPeriodMoviesArr;
+    }
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -190,7 +198,21 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+ function getBiggestBoxOfficeMovie(movies) {
+  let assumedAmount=0;
+  let highestmovieName = "";
+  for (let i=0; i<movies.length; i++) {
+    let totalInStringArr = movies[i].boxOffice.split("");
+    totalInStringArr.shift();
+    let total = totalInStringArr.join("");
+    total = Number(total.split(",").join(""));
+    if(total > assumedAmount) {
+      assumedAmount = total;
+      highestmovieName = movies[i].title;
+    }
+  }
+  return !movies.length? null:highestmovieName;
+}
 
 // Do not change anything below this line.
 module.exports = {
