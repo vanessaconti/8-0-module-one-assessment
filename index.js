@@ -47,7 +47,15 @@ const exampleMovies = require("./movies");
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+ function getHighestMetascore(movies) {
+  let highestMetascore = 0;
+  for(let movie of movies) {
+    if (+movie.metascore > highestMetascore){
+      highestMetascore = +movie.metascore;
+    }
+  }
+  return highestMetascore;
+}
 
 /**
  * getAverageIMDBRating()
